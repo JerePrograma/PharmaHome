@@ -46,6 +46,7 @@ export function MedicamentoForm({ initial, onSubmit }: Props) {
   return (
     <form className="space-y-3" onSubmit={handleSubmit}>
       <label className="field"><span>Droga *</span><input value={data.droga} onChange={(e) => update('droga', e.target.value)} required /></label>
+      <label className="field"><span>Nombre comercial</span><input value={data.nombreComercial ?? ''} onChange={(e) => update('nombreComercial', e.target.value)} /></label>
       <div className="grid grid-cols-2 gap-2">
         <label className="field"><span>Dosis *</span><input type="number" step="0.1" min="0" value={data.dosisCantidad} onChange={(e) => update('dosisCantidad', Number(e.target.value))} required /></label>
         <label className="field"><span>Unidad *</span><select value={data.dosisUnidad} onChange={(e) => update('dosisUnidad', e.target.value as Medicamento['dosisUnidad'])}><option>mg</option><option>mcg</option><option>g</option><option>ml</option><option>otra</option></select></label>
@@ -57,6 +58,7 @@ export function MedicamentoForm({ initial, onSubmit }: Props) {
       <label className="field"><span>Estado receta *</span><select value={data.estadoReceta} onChange={(e) => update('estadoReceta', e.target.value as EstadoReceta)}>{estados.map((e) => <option key={e}>{e}</option>)}</select></label>
       <label className="field"><span>Marca preferida</span><input value={data.marcaPreferida ?? ''} onChange={(e) => update('marcaPreferida', e.target.value)} /></label>
       <label className="field"><span>Marcas alternativas (separadas por coma)</span><input value={(data.marcasAlternativas ?? []).join(', ')} onChange={(e) => update('marcasAlternativas', e.target.value.split(',').map((s) => s.trim()).filter(Boolean))} /></label>
+      <label className="field"><span>Color de etiqueta</span><input type="color" value={data.colorEtiqueta ?? '#0f172a'} onChange={(e) => update('colorEtiqueta', e.target.value)} /></label>
       <div className="grid grid-cols-2 gap-2">
         <label className="field"><span>Stock cajas extra</span><input type="number" min="0" value={data.stockActualCajas ?? ''} onChange={(e) => update('stockActualCajas', e.target.value ? Number(e.target.value) : undefined)} /></label>
         <label className="field"><span>Stock sueltos</span><input type="number" min="0" value={data.stockActualComprimidosSueltos ?? ''} onChange={(e) => update('stockActualComprimidosSueltos', e.target.value ? Number(e.target.value) : undefined)} /></label>
