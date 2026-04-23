@@ -4,35 +4,61 @@
 
 :root {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color-scheme: light;
 }
 
 body {
   margin: 0;
-  background: #f8fafc;
+  background: linear-gradient(180deg, #fff1f6 0%, #fff 45%, #fff7fb 100%);
+}
+
+#root {
+  min-height: 100vh;
 }
 
 @layer components {
   .btn-primary {
-    @apply rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white active:scale-[0.99];
+    @apply min-h-11 rounded-2xl bg-fuchsia-800 px-4 py-3 text-center text-sm font-semibold text-white active:scale-[0.99];
   }
   .btn-secondary {
-    @apply rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800;
+    @apply min-h-11 rounded-2xl border border-rose-200 bg-white px-3 py-2 text-sm font-medium text-fuchsia-800;
   }
   .btn-danger {
-    @apply rounded-xl bg-rose-600 px-3 py-2 text-sm text-white;
+    @apply min-h-11 rounded-2xl bg-rose-600 px-3 py-2 text-sm font-semibold text-white;
   }
   .field {
-    @apply flex flex-col gap-1 text-sm;
+    @apply flex flex-col gap-1 text-sm text-fuchsia-900;
+  }
+  .field span {
+    @apply font-medium;
   }
   .field input,
   .field select,
   .field textarea {
-    @apply rounded-xl border border-slate-300 bg-white p-3 text-base;
+    @apply rounded-2xl border border-rose-200 bg-white p-3 text-base text-fuchsia-950;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus,
+  .btn-primary:focus,
+  .btn-secondary:focus,
+  .btn-danger:focus,
+  .nav-btn:focus {
+    @apply outline-none ring-2 ring-fuchsia-400 ring-offset-1;
   }
   .nav-btn {
-    @apply rounded-lg px-3 py-2 text-sm text-slate-700;
+    @apply min-h-11 rounded-xl px-3 py-2 text-sm font-medium text-fuchsia-700;
   }
   .nav-btn.active {
-    @apply bg-slate-900 text-white;
+    @apply bg-fuchsia-800 text-white;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger,
+  .nav-btn {
+    @apply text-xs;
   }
 }
