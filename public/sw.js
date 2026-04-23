@@ -1,5 +1,5 @@
 const CACHE = 'pharmahome-v1';
-const ASSETS = ['/', '/index.html', '/manifest.webmanifest'];
+const ASSETS = ['./', './index.html', './manifest.webmanifest'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
@@ -21,7 +21,7 @@ self.addEventListener('fetch', (event) => {
           void caches.open(CACHE).then((cache) => cache.put(event.request, cloned));
           return response;
         })
-        .catch(() => caches.match('/index.html'));
+        .catch(() => caches.match('./index.html'));
     })
   );
 });
