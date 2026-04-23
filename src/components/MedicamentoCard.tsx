@@ -10,20 +10,27 @@ const colorMap = {
   gris: 'bg-slate-100 text-slate-700 border-slate-200'
 };
 
+const estadoLabel = {
+  verde: 'OK',
+  amarillo: 'Hacer Receta',
+  rojo: 'COMPRAR',
+  gris: 'Incompleto'
+};
+
 export function MedicamentoCard({ medicamento, onDelete }: { medicamento: Medicamento; onDelete: (id: string) => void }) {
   const cobertura = calcularCobertura(medicamento);
   const estado = colorCobertura(cobertura.diasRestantesCobertura);
 
   return (
-    <article className="mb-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+    <article className="mb-3 rounded-3xl border border-rose-100 bg-white p-4 shadow-sm shadow-rose-100/70">
       <div className="mb-2 flex items-start justify-between gap-2">
         <div>
-          <h2 className="text-lg font-semibold">{medicamento.droga}</h2>
-          <p className="text-sm text-slate-700">{medicamento.dosisCantidad} {medicamento.dosisUnidad}</p>
+          <h2 className="text-lg font-semibold text-fuchsia-900">{medicamento.droga}</h2>
+          <p className="text-sm text-fuchsia-700">{medicamento.dosisCantidad} {medicamento.dosisUnidad}</p>
         </div>
-        <span className={`rounded-full border px-2 py-1 text-xs font-medium ${colorMap[estado]}`}>{estado}</span>
+        <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${colorMap[estado]}`}>{estadoLabel[estado]}</span>
       </div>
-      <ul className="space-y-1 text-sm text-slate-700">
+      <ul className="space-y-1 text-sm text-fuchsia-900">
         <li>Caja: {medicamento.cantidadComprimidosPorCaja} comprimidos</li>
         <li>Toma: {medicamento.comprimidosPorDia} por día</li>
         {medicamento.marcaPreferida ? <li>Marca: {medicamento.marcaPreferida}</li> : null}

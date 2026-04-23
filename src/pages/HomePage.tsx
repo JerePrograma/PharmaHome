@@ -66,11 +66,11 @@ export function HomePage() {
 
   return (
     <div>
-      {mensaje ? <button className="mb-3 w-full rounded-xl bg-emerald-50 p-2 text-sm text-emerald-700" onClick={limpiarMensaje}>{mensaje}</button> : null}
-      <input className="mb-2 w-full rounded-xl border border-slate-300 p-3" placeholder="Buscar por droga o marca" value={q} onChange={(e) => setQ(e.target.value)} />
+      {mensaje ? <button className="mb-3 w-full rounded-2xl bg-emerald-50 p-3 text-sm text-emerald-800" onClick={limpiarMensaje}>{mensaje}</button> : null}
+      <input className="mb-2 w-full rounded-2xl border border-rose-200 bg-white p-3 text-base text-fuchsia-900" placeholder="Buscar por droga o marca" value={q} onChange={(e) => setQ(e.target.value)} />
       <div className="mb-3 flex gap-2 overflow-x-auto pb-1">
         {filtros.map((item) => (
-          <button key={item} className={`whitespace-nowrap rounded-full px-3 py-2 text-sm ${filtro === item ? 'bg-slate-900 text-white' : 'bg-white border border-slate-300'}`} onClick={() => setFiltro(item)}>{item}</button>
+          <button key={item} className={`whitespace-nowrap rounded-full px-3 py-2 text-sm ${filtro === item ? 'bg-fuchsia-800 text-white' : 'bg-white border border-rose-200 text-fuchsia-800'}`} onClick={() => setFiltro(item)}>{item}</button>
         ))}
       </div>
 
