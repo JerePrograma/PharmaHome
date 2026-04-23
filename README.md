@@ -27,12 +27,17 @@ npm run preview
 npm run test
 ```
 
-## Deploy estático (Vercel / Netlify / Cloudflare Pages)
-1. Subir repo a GitHub.
-2. Crear proyecto en el proveedor.
-3. Build command: `npm run build`.
-4. Output directory: `dist`.
-5. Deploy.
+## Deploy en GitHub Pages
+Este repo ya incluye workflow en `.github/workflows/deploy-pages.yml`.
+
+### Pasos
+1. Subir el proyecto a GitHub.
+2. Asegurar que la rama principal sea `main`.
+3. En GitHub: **Settings → Pages → Build and deployment**.
+4. En **Source**, elegir **GitHub Actions**.
+5. Hacer push a `main` (o ejecutar el workflow manualmente desde **Actions**).
+
+El workflow compila con una base automática del nombre del repositorio (`/${repo}/`) para que las rutas funcionen correctamente en Pages.
 
 ## Instalar como PWA en Android (Chrome)
 1. Abrir la app desplegada por HTTPS.
