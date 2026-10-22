@@ -1,5 +1,13 @@
 # PharmaHome (PWA mobile-first)
 
+## Demo en Scalaris
+
+La configuración `deployment/vps/compose.yaml` publica la aplicación en `/pharmahome/`, con la imagen estática sin privilegios y límite de 64 MB. El proxy Caddy usa la red Docker externa `proxy` y el alias `pharmahome-demo-web:8080`. El puerto de diagnóstico 18093 sólo escucha en loopback.
+
+Los datos permanecen en IndexedDB del navegador; el VPS no recibe medicamentos ni copias importadas. El service worker limita sus recursos y limpieza de caché al espacio de PharmaHome, para convivir con otras aplicaciones de Scalaris.
+
+Despliegue desde la raíz del repositorio: `docker compose -f deployment/vps/compose.yaml up -d --build`. Verificar `/pharmahome/`, una ruta interna y `/health` desde el VPS antes de activar el enlace público.
+
 Aplicación web simple para control cotidiano de medicamentos desde celular, pensada para una persona no técnica.
 
 ## Stack
